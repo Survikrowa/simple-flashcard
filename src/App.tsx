@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Main } from "./pages/main/Main";
-import { NewSet } from "./pages/newSet/NewFlashCardKit";
-import styles from "./App.module.scss";
+import { NewSet } from "./pages/addNewFlashcards/NewFlashCardKit";
 
 export function App() {
   return (
