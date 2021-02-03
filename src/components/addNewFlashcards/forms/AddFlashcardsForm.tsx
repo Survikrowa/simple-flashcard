@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import { SubmitHandler, useForm, Controller } from "react-hook-form";
 import { v4 as uuid } from "uuid";
+import useLocalStorage from "use-local-storage-state";
 import { Button } from "../../button/Button";
 import styles from "./AddFlashcardsForm.module.scss";
 
@@ -8,13 +9,29 @@ type FlashCardInputs = {
   id: string;
 };
 
+type FormData = {
+  title: string;
+  description: string;
+  difficulty: string;
+  inputs: FormInputsValues;
+};
+
+type FormInputsValues = {
+  [key: string]: string;
+};
+
 const initialState = [{ id: uuid() }, { id: uuid() }];
 
 export const AddFlashcardsForm = () => {
+  const [flashcards, setFlashcards] = useLocalStorage("flashcards", [{}]);
   const [flashCardInputs, setFlashCardInputs] = useState<FlashCardInputs[]>(
     initialState
   );
-  const { handleSubmit, register, errors, control } = useForm<any>();
+  const [isValid, setIsValid] = useState(true);
+  const { handleSubmit, register, errors, control, trigger } = useForm<any>({
+    mode: "onSubmit",
+    reValidateMode: "onChange",
+  });
 
   const appendInput = useCallback(() => {
     setFlashCardInputs([...flashCardInputs, { id: uuid() }]);
@@ -29,6 +46,18 @@ export const AddFlashcardsForm = () => {
     },
     [flashCardInputs]
   );
+
+  const addNewFlashcardsToLS = (formData: FormData) => {
+    setFlashcards([...flashcards, formData]);
+  };
+
+  const handleAddFlashcardButton = async () => {
+    const isInputValid = await trigger();
+    setIsValid(isInputValid);
+    if (isInputValid) {
+      appendInput();
+    }
+  };
 
   const renderInputs = () => {
     return flashCardInputs.map((item, i) => (
@@ -85,8 +114,20 @@ export const AddFlashcardsForm = () => {
   };
 
   const handleFormSubmit: SubmitHandler<any> = (data) => {
-    console.log(data);
+    const { title, description, difficulty, ...inputs } = data;
+
+    const formData = {
+      title,
+      description,
+      difficulty,
+      inputs: {
+        ...inputs,
+      },
+    };
+    setIsValid(true);
+    addNewFlashcardsToLS(formData);
   };
+
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
       <div className={styles.flashcardGroupContainer}>
@@ -161,7 +202,9 @@ export const AddFlashcardsForm = () => {
       <div className={styles.flashcardsInputsContainer}>
         {renderInputs()}
         <div className={styles.buttonsContainer}>
-          <Button onClick={() => appendInput()}>Dodaj fiszkę</Button>
+          <Button onClick={handleAddFlashcardButton} disabled={!isValid}>
+            Dodaj fiszkę
+          </Button>
           <Button type="submit">Zapisz</Button>
         </div>
       </div>
