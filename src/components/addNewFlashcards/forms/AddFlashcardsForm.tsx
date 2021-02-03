@@ -1,9 +1,11 @@
 import { useState, useCallback } from "react";
 import { SubmitHandler, useForm, Controller } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import useLocalStorage from "use-local-storage-state";
 import { Button } from "../../button/Button";
 import styles from "./AddFlashcardsForm.module.scss";
+import { useMessageDispatch } from "../../../hooks/useMessage";
 
 type FlashCardInputs = {
   id: string;
@@ -23,6 +25,8 @@ type FormInputsValues = {
 const initialState = [{ id: uuid() }, { id: uuid() }];
 
 export const AddFlashcardsForm = () => {
+  const history = useHistory();
+  const dispatch = useMessageDispatch();
   const [flashcards, setFlashcards] = useLocalStorage("flashcards", [{}]);
   const [flashCardInputs, setFlashCardInputs] = useState<FlashCardInputs[]>(
     initialState
@@ -126,6 +130,8 @@ export const AddFlashcardsForm = () => {
     };
     setIsValid(true);
     addNewFlashcardsToLS(formData);
+    dispatch({ type: "addMessage", payload: "Pomyślnie dodano fiszki!" });
+    history.push("/");
   };
 
   return (
