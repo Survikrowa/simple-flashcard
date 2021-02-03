@@ -1,0 +1,28 @@
+.button {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid black;
+  border-radius: 32px;
+  text-align: center;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: auto;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 96px;
+}
+
+.primary {
+  background-color: #355070;
+  border-color: #355070;
+  color: white;
+}
+
+.danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
