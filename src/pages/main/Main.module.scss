@@ -1,4 +1,39 @@
 .background {
-  background-color: #4e4e4e;
-  height: 100vh;
+  background-color: white;
+}
+
+.line {
+  text-transform: uppercase;
+  font-family: Comfortaa;
+  letter-spacing: 0.2em;
+  line-height: 27px;
+  width: 100%;
+  color: #00000066;
+  text-align: center;
+  position: relative;
+}
+
+.line::after {
+  position: absolute;
+  content: "";
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  top: 10px;
+  right: 1px;
+  width: 40%;
+}
+
+.line::before {
+  position: absolute;
+  content: "";
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  left: 1px;
+  top: 10px;
+  width: 40%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
 }

@@ -1,22 +1,21 @@
-import { Link } from "react-router-dom";
+import { Banner } from "../../components/main/banner/Banner";
+import { Header } from "../../components/main/header/Header";
+import { PresetFlashcardKits } from "../../components/main/presetFlashcardKits/PresetFlashcardKits";
 import { useMessageState } from "../../hooks/useMessage";
 import styles from "./Main.module.scss";
 
 export const Main = () => {
   const message = useMessageState();
-
   return (
     <>
+      <Header />
       <main className={styles.background}>
         {message && message.message}
-        <span>
-          Nauka nie musi być trudna! Ucz się 5 minut dziennie, a osiągniesz swój
-          cel.
-        </span>
-        <div>
-          <Link to="/newset">TWORZE ZESTAW TUTAJ</Link>
-          <span>Stwórz zestaw</span>
+        <Banner />
+        <div className={styles.container}>
+          <span className={styles.line}>LUB</span>
         </div>
+        <PresetFlashcardKits />
       </main>
     </>
   );

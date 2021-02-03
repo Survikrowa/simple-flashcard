@@ -1,0 +1,19 @@
+.flashcardText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 100px;
+}
+
+.link {
+  font-family: "Comfortaa", cursive;
+  text-decoration: none;
+  color: white;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 28px;
+  border-radius: 28px;
+  padding: 16px 32px;
+  margin: 1rem 0;
+  background: linear-gradient(101.14deg, #0f68a9 4.74%, #7ef29d 123.99%);
+}

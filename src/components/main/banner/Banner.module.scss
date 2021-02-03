@@ -1,0 +1,39 @@
+.banner {
+  background-color: #355070;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  font-family: "Comfortaa", cursive;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 150%;
+  color: white;
+}
+
+.link {
+  color: black;
+  background-color: white;
+  border-radius: 32px;
+  padding: 8px 8px 8px 8px;
+  text-decoration: none;
+  width: auto;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  font-family: "Comfortaa";
+  font-weight: bold;
+}
+
+.link:visited {
+  color: black;
+}
