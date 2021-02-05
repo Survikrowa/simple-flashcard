@@ -4,6 +4,8 @@ import { App } from "./App";
 import { MessageProvider } from "./context/MessageContext";
 import reportWebVitals from "./reportWebVitals";
 import "./global.scss";
+import "swiper/swiper.scss";
+import "swiper/components/navigation/navigation.scss";
 
 ReactDOM.render(
   <React.StrictMode>

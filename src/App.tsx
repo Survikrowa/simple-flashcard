@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Main } from "./pages/main/Main";
 import { NewSet } from "./pages/addNewFlashcards/NewFlashCardKit";
+import { PresetFlashcard } from "./pages/presetFlashcard/PresetFlashcard";
 
 export function App() {
   return (
@@ -11,6 +12,9 @@ export function App() {
         </Route>
         <Route path="/newset">
           <NewSet />
+        </Route>
+        <Route path="/presetfc/:id">
+          <PresetFlashcard />
         </Route>
       </Switch>
     </Router>

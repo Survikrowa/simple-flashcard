@@ -3,8 +3,8 @@ import { PresetFlashcard } from "../presetFlashcard/PresetFlashcard";
 import styles from "./PresetFlashcardKits.module.scss";
 
 export const PresetFlashcardKits = () => {
-  const renderFlashcardKits = () => {
-    return flashcardsData.map(({ title, description }, i) => {
+  const renderFlashcardKits = flashcardsData.map(
+    ({ title, description }, i) => {
       return (
         <PresetFlashcard
           title={title}
@@ -13,13 +13,13 @@ export const PresetFlashcardKits = () => {
           index={i}
         />
       );
-    });
-  };
+    }
+  );
 
   return (
     <div className={styles.flashcardsContainer}>
       <h2 className={styles.header}>Skorzystaj z dostępnych zestawów</h2>
-      {renderFlashcardKits()}
+      {renderFlashcardKits}
     </div>
   );
 };

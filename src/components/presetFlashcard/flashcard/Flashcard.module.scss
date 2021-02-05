@@ -1,0 +1,29 @@
+.flashcardContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flashcard {
+  padding: 9.1rem 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
+  border-radius: 24px;
+  margin: 3rem 4rem 2rem 4rem;
+  min-width: 10rem;
+  min-height: 10rem;
+}
+
+.flashcardButton {
+  background: none;
+  border: none;
+  margin: 1rem;
+}
+
+.definition {
+  margin: 1rem;
+}

@@ -63,59 +63,57 @@ export const AddFlashcardsForm = () => {
     }
   };
 
-  const renderInputs = () => {
-    return flashCardInputs.map((item, i) => (
-      <div key={item.id}>
-        <Controller
-          name={`field${item.id}`}
-          control={control}
-          defaultValue={item.id}
-          rules={{ required: true }}
-          render={({ name }) => {
-            return (
-              <div className={styles.flashcardCreator}>
-                <label>
-                  <input
-                    name={name}
-                    type="text"
-                    ref={register({ required: true })}
-                    placeholder="Wpisz pojęcie..."
-                    className={styles.input}
-                  />
-                  Pojęcie
-                </label>
-                {errors[name]?.type === "required" && (
-                  <span className={styles.validationErrorMessage}>
-                    Pole nie może być puste
-                  </span>
-                )}
-                <label>
-                  <input
-                    name={name + "second"}
-                    type="text"
-                    ref={register({ required: true })}
-                    placeholder="Wpisz definicję..."
-                    className={styles.input}
-                  />
-                  Definicja
-                </label>
-                {errors[name + "second"]?.type === "required" && (
-                  <span className={styles.validationErrorMessage}>
-                    Pole nie może być puste
-                  </span>
-                )}
-                {flashCardInputs.length > 2 && (
-                  <Button role="danger" onClick={() => removeInput(i)}>
-                    Remove input
-                  </Button>
-                )}
-              </div>
-            );
-          }}
-        />
-      </div>
-    ));
-  };
+  const inputs = flashCardInputs.map((item, i) => (
+    <div key={item.id}>
+      <Controller
+        name={`field${item.id}`}
+        control={control}
+        defaultValue={item.id}
+        rules={{ required: true }}
+        render={({ name }) => {
+          return (
+            <div className={styles.flashcardCreator}>
+              <label>
+                <input
+                  name={name}
+                  type="text"
+                  ref={register({ required: true })}
+                  placeholder="Wpisz pojęcie..."
+                  className={styles.input}
+                />
+                Pojęcie
+              </label>
+              {errors[name]?.type === "required" && (
+                <span className={styles.validationErrorMessage}>
+                  Pole nie może być puste
+                </span>
+              )}
+              <label>
+                <input
+                  name={name + "second"}
+                  type="text"
+                  ref={register({ required: true })}
+                  placeholder="Wpisz definicję..."
+                  className={styles.input}
+                />
+                Definicja
+              </label>
+              {errors[name + "second"]?.type === "required" && (
+                <span className={styles.validationErrorMessage}>
+                  Pole nie może być puste
+                </span>
+              )}
+              {flashCardInputs.length > 2 && (
+                <Button role="danger" onClick={() => removeInput(i)}>
+                  Remove input
+                </Button>
+              )}
+            </div>
+          );
+        }}
+      />
+    </div>
+  ));
 
   const handleFormSubmit: SubmitHandler<any> = (data) => {
     const { title, description, difficulty, ...inputs } = data;
@@ -206,7 +204,7 @@ export const AddFlashcardsForm = () => {
         </div>
       </div>
       <div className={styles.flashcardsInputsContainer}>
-        {renderInputs()}
+        {inputs}
         <div className={styles.buttonsContainer}>
           <Button onClick={handleAddFlashcardButton} disabled={!isValid}>
             Dodaj fiszkę

@@ -1,0 +1,20 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.flashcardsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.definiton {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: initial;
+}
