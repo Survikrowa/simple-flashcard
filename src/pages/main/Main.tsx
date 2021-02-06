@@ -10,7 +10,9 @@ export const Main = () => {
     <>
       <Header />
       <main className={styles.main}>
-        <span className={styles.message}>{message && message.message}</span>
+        {message.message && (
+          <span className={styles.message}> {message.message}</span>
+        )}
         <Banner />
         <div className={styles.container}>
           <span className={styles.line}>LUB</span>
