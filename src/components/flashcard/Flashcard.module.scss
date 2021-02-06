@@ -16,14 +16,20 @@
   margin: 3rem 4rem 2rem 4rem;
   min-width: 10rem;
   min-height: 10rem;
+  position: relative;
 }
 
 .flashcardButton {
   background: none;
   border: none;
   margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-.definition {
-  margin: 1rem;
+.term {
+  position: absolute;
+  font-family: "Comfortaa", cursive;
 }

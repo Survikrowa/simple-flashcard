@@ -2,10 +2,10 @@ import { useParams } from "react-router-dom";
 import { useState, useCallback } from "react";
 import SwiperCore, { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Flashcard } from "../../components/presetFlashcard/flashcard/Flashcard";
+import { Flashcard } from "../../components/flashcard/Flashcard";
 import { flashcardsData } from "../../flashcardsData/flashcardsData";
-import { Header } from "../../components/presetFlashcard/header/Header";
-import { Footer } from "../../components/presetFlashcard/footer/Footer";
+import { Header } from "../../components/pages/presetFlashcard/header/Header";
+import { Footer } from "../../components/pages/presetFlashcard/footer/Footer";
 import styles from "./PresetFlashcard.module.scss";
 import clsx from "clsx";
 
@@ -39,11 +39,9 @@ export const PresetFlashcard = () => {
   return (
     <main className={styles.main}>
       <Header />
-
       <Swiper
         slidesPerView={1}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
+        onSlideChange={() => setIsVisible(false)}
         className={styles.flashcardsContainer}
         centeredSlides
         centeredSlidesBounds
@@ -51,7 +49,6 @@ export const PresetFlashcard = () => {
       >
         {flashcards}
       </Swiper>
-
       <div
         className={clsx(
           `${styles.definiton}`,
@@ -60,7 +57,6 @@ export const PresetFlashcard = () => {
       >
         {definiton}
       </div>
-
       <Footer />
     </main>
   );

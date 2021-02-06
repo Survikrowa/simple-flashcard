@@ -1,4 +1,4 @@
-import { flashcardsData } from "../../../flashcardsData/flashcardsData";
+import { flashcardsData } from "../../../../flashcardsData/flashcardsData";
 import { PresetFlashcard } from "../presetFlashcard/PresetFlashcard";
 import styles from "./PresetFlashcardKits.module.scss";
 

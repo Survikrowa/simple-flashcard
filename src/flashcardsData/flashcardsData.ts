@@ -8,8 +8,8 @@ export const flashcardsData = [
         description: "Jest to wzór skróconego mnożenia",
       },
       {
-        term: "shit",
-        description: "shitv2",
+        term: "Wzór skróconego mnożenia",
+        description: "Wzór skróconego mnożeniav2",
       },
     ],
   },

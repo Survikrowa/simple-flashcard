@@ -1,5 +1,5 @@
-import { AddFlashcardsForm } from "../../components/addNewFlashcards/forms/AddFlashcardsForm";
-import { Header } from "../../components/addNewFlashcards/header/Header";
+import { AddFlashcardsForm } from "../../components/pages/addNewFlashcards/forms/AddFlashcardsForm";
+import { Header } from "../../components/pages/addNewFlashcards/header/Header";
 import styles from "./NewFlashCardKit.module.scss";
 
 export const NewSet = () => {

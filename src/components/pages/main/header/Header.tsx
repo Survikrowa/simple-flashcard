@@ -1,4 +1,4 @@
-import { Logo } from "../../svg/Logo";
+import { Logo } from "../../../svg/Logo";
 import styles from "./Header.module.scss";
 
 export const Header = () => {

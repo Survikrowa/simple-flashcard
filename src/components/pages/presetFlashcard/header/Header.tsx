@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { NavigationArrow } from "../../svg/NavigationArrow";
+import { NavigationArrow } from "../../../svg/NavigationArrow";
 import styles from "./Header.module.scss";
 
 export const Header = () => {

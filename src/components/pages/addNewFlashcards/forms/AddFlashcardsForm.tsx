@@ -3,9 +3,9 @@ import { SubmitHandler, useForm, Controller } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import useLocalStorage from "use-local-storage-state";
-import { Button } from "../../button/Button";
+import { Button } from "../../../button/Button";
 import styles from "./AddFlashcardsForm.module.scss";
-import { useMessageDispatch } from "../../../hooks/useMessage";
+import { useMessageDispatch } from "../../../../hooks/useMessage";
 
 type FlashCardInputs = {
   id: string;

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Arrow } from "../../svg/Arrow";
+import { Arrow } from "../../../svg/Arrow";
 import styles from "./Header.module.scss";
 
 export const Header = () => {

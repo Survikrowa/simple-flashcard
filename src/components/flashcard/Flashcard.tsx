@@ -14,13 +14,15 @@ export const Flashcard = ({
   return (
     <>
       <div className={styles.flashcardContainer}>
-        <div className={styles.flashcard}>{term}</div>
+        <div className={styles.flashcard}>
+          <span className={styles.term}>{term}</span>
+        </div>
       </div>
       <button
         className={styles.flashcardButton}
         onClick={() => showDefinitonHandler(definition)}
       >
-        Show definition
+        <span>Show definition</span>
       </button>
     </>
   );
