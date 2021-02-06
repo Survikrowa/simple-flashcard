@@ -25,7 +25,11 @@ export const Header = () => {
     flashcards
       .filter((e) => e.title)
       .map((flashcard, i) => (
-        <Link to={`/flashcards/${i + 1}`} className={styles.customFlashcards}>
+        <Link
+          to={`/flashcards/${i + 1}`}
+          className={styles.customFlashcards}
+          key={flashcard.title + i}
+        >
           <div
             className={clsx(styles[flashcard.difficulty], styles.difficultyBox)}
           ></div>
