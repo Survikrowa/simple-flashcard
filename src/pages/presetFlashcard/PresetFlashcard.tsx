@@ -1,62 +1,22 @@
 import { useParams } from "react-router-dom";
-import { useState, useCallback } from "react";
-import SwiperCore, { Navigation } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Flashcard } from "../../components/flashcard/Flashcard";
-import { flashcardsData } from "../../flashcardsData/flashcardsData";
 import { Header } from "../../components/pages/presetFlashcard/header/Header";
 import { Footer } from "../../components/pages/presetFlashcard/footer/Footer";
 import styles from "./PresetFlashcard.module.scss";
-import clsx from "clsx";
+import { flashcardsData } from "../../flashcardsData/flashcardsData";
+import { FlashcardsSlider } from "../../components/flashcardsSlider/FlashcardsSlider";
 
 type URLParams = {
   id: string;
 };
 
-SwiperCore.use([Navigation]);
-
 export const PresetFlashcard = () => {
   const { id } = useParams<URLParams>();
-  const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [definiton, setDefinition] = useState<string | null>(null);
 
-  const handleShowDefinitionButton = useCallback((definiton: string | null) => {
-    setDefinition(definiton);
-    setIsVisible((prevState) => !prevState);
-  }, []);
-
-  const flashcards = flashcardsData[parseInt(id)].flashcards.map(
-    ({ term, description }, i) => (
-      <SwiperSlide key={term + i} className={styles.swiperSlide}>
-        <Flashcard
-          term={term}
-          definition={description}
-          showDefinitonHandler={handleShowDefinitionButton}
-        />
-      </SwiperSlide>
-    )
-  );
+  const flashcards = flashcardsData[parseInt(id)].flashcards;
   return (
     <main className={styles.main}>
       <Header />
-      <Swiper
-        slidesPerView={1}
-        onSlideChange={() => setIsVisible(false)}
-        className={styles.flashcardsContainer}
-        centeredSlides
-        centeredSlidesBounds
-        navigation
-      >
-        {flashcards}
-      </Swiper>
-      <div
-        className={clsx(
-          `${styles.definiton}`,
-          isVisible && `${styles.visible}`
-        )}
-      >
-        {definiton}
-      </div>
+      <FlashcardsSlider flashcardsData={flashcards} />
       <Footer />
     </main>
   );

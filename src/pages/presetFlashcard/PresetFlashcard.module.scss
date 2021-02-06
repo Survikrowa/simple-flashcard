@@ -4,25 +4,3 @@
   justify-content: center;
   background-color: white;
 }
-
-.flashcardsContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.definiton {
-  visibility: hidden;
-  margin: 1rem;
-  font-family: "Comfortaa", cursive;
-}
-
-.visible {
-  visibility: initial;
-}
-
-.swiperSlide {
-  display: flex;
-  flex-direction: column;
-}
