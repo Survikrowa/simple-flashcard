@@ -9,8 +9,8 @@ export const Main = () => {
   return (
     <>
       <Header />
-      <main className={styles.background}>
-        {message && message.message}
+      <main className={styles.main}>
+        <span className={styles.message}>{message && message.message}</span>
         <Banner />
         <div className={styles.container}>
           <span className={styles.line}>LUB</span>
