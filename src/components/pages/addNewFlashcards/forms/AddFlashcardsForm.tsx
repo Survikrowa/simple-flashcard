@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { SubmitHandler, useForm, Controller } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import useLocalStorage from "use-local-storage-state";
@@ -15,7 +15,7 @@ type FormData = {
   title: string;
   description: string;
   difficulty: string;
-  inputs: FormInputsValues;
+  flashcards: FormInputsValues[];
 };
 
 type FormInputsValues = {
@@ -32,7 +32,7 @@ export const AddFlashcardsForm = () => {
     initialState
   );
   const [isValid, setIsValid] = useState(true);
-  const { handleSubmit, register, errors, control, trigger } = useForm<any>({
+  const { handleSubmit, register, errors, trigger } = useForm<any>({
     mode: "onSubmit",
     reValidateMode: "onChange",
   });
@@ -65,68 +65,79 @@ export const AddFlashcardsForm = () => {
 
   const inputs = flashCardInputs.map((item, i) => (
     <div key={item.id}>
-      <Controller
-        name={`field${item.id}`}
-        control={control}
-        defaultValue={item.id}
-        rules={{ required: true }}
-        render={({ name }) => {
-          return (
-            <div className={styles.flashcardCreator}>
-              <label>
-                <input
-                  name={name}
-                  type="text"
-                  ref={register({ required: true })}
-                  placeholder="Wpisz pojęcie..."
-                  className={styles.input}
-                />
-                Pojęcie
-              </label>
-              {errors[name]?.type === "required" && (
-                <span className={styles.validationErrorMessage}>
-                  Pole nie może być puste
-                </span>
-              )}
-              <label>
-                <input
-                  name={name + "second"}
-                  type="text"
-                  ref={register({ required: true })}
-                  placeholder="Wpisz definicję..."
-                  className={styles.input}
-                />
-                Definicja
-              </label>
-              {errors[name + "second"]?.type === "required" && (
-                <span className={styles.validationErrorMessage}>
-                  Pole nie może być puste
-                </span>
-              )}
-              {flashCardInputs.length > 2 && (
-                <Button role="danger" onClick={() => removeInput(i)}>
-                  Remove input
-                </Button>
-              )}
-            </div>
-          );
-        }}
-      />
+      <div className={styles.flashcardCreator}>
+        <label>
+          <input
+            name={item.id + "term"}
+            type="text"
+            ref={register({ required: true })}
+            placeholder="Wpisz pojęcie..."
+            className={styles.input}
+          />
+          Pojęcie
+        </label>
+        {errors[item.id + "term"]?.type === "required" && (
+          <span className={styles.validationErrorMessage}>
+            Pole nie może być puste
+          </span>
+        )}
+        <label>
+          <input
+            name={item.id + "description"}
+            type="text"
+            ref={register({ required: true })}
+            placeholder="Wpisz definicję..."
+            className={styles.input}
+          />
+          Definicja
+        </label>
+        {errors[item.id + "description"]?.type === "required" && (
+          <span className={styles.validationErrorMessage}>
+            Pole nie może być puste
+          </span>
+        )}
+        {flashCardInputs.length > 2 && (
+          <Button role="danger" onClick={() => removeInput(i)}>
+            Remove input
+          </Button>
+        )}
+      </div>
     </div>
   ));
 
-  const handleFormSubmit: SubmitHandler<any> = (data) => {
+  const mapKeyToDeleteId = (key: string) => {
+    if (key.includes("term")) {
+      const positionInString = key.search("term");
+      return key.slice(positionInString);
+    } else {
+      const positionInString = key.search("description");
+      return key.slice(positionInString);
+    }
+  };
+  const handleFormSubmit: SubmitHandler<FormData> = (data) => {
     const { title, description, difficulty, ...inputs } = data;
+    const cards = Object.entries(inputs).map(([key, value]) => {
+      const keyWithoutId = mapKeyToDeleteId(key);
+      return {
+        [keyWithoutId]: value,
+      };
+    });
+    const flashcards = cards
+      .map((_e, i) => {
+        return i % 2 === 0 ? cards.slice(i, i + 2) : null;
+      })
+      .filter((e) => {
+        return e;
+      })
+      //@ts-ignore
+      .map(([term, desc]) => ({ ...term, ...desc }));
 
     const formData = {
       title,
       description,
       difficulty,
-      inputs: {
-        ...inputs,
-      },
+      flashcards,
     };
-    setIsValid(true);
     addNewFlashcardsToLS(formData);
     dispatch({ type: "addMessage", payload: "Pomyślnie dodano fiszki!" });
     history.push("/");

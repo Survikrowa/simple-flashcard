@@ -24,9 +24,18 @@
   border: none;
   margin: 1rem;
   display: flex;
+
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.flashcardButton span {
+  text-decoration-line: underline;
+  color: gray;
+  line-height: 22px;
+  font-weight: 500;
+  font-size: 1rem;
 }
 
 .term {

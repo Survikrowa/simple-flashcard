@@ -8,7 +8,7 @@ import styles from "./FlashcardsSlider.module.scss";
 SwiperCore.use([Navigation]);
 
 type SliderProps = {
-  flashcardsData: flashcards[];
+  flashcardsData: flashcards[] | undefined;
 };
 
 type flashcards = {
@@ -24,15 +24,17 @@ export const FlashcardsSlider = ({ flashcardsData }: SliderProps) => {
     setDefinition(definiton);
     setIsVisible((prevState) => !prevState);
   }, []);
-  const flashcards = flashcardsData.map(({ term, description }, i) => (
-    <SwiperSlide key={term + i} className={styles.swiperSlide}>
-      <Flashcard
-        term={term}
-        definition={description}
-        showDefinitonHandler={handleShowDefinitionButton}
-      />
-    </SwiperSlide>
-  ));
+  const flashcards =
+    flashcardsData &&
+    flashcardsData.map(({ term, description }, i) => (
+      <SwiperSlide key={term + i} className={styles.swiperSlide}>
+        <Flashcard
+          term={term}
+          definition={description}
+          showDefinitonHandler={handleShowDefinitionButton}
+        />
+      </SwiperSlide>
+    ));
   return (
     <>
       <Swiper
