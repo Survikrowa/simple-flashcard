@@ -70,7 +70,7 @@ export const AddFlashcardsForm = () => {
           <input
             name={item.id + "term"}
             type="text"
-            ref={register({ required: true })}
+            ref={register({ required: true, maxLength: 20 })}
             placeholder="Wpisz pojęcie..."
             className={styles.input}
           />
@@ -79,6 +79,11 @@ export const AddFlashcardsForm = () => {
         {errors[item.id + "term"]?.type === "required" && (
           <span className={styles.validationErrorMessage}>
             Pole nie może być puste
+          </span>
+        )}
+        {errors[item.id + "term"]?.type === "maxLength" && (
+          <span className={styles.validationErrorMessage}>
+            Pojęcie nie może być dłuższe niż 20 znaków
           </span>
         )}
         <label>
@@ -151,12 +156,17 @@ export const AddFlashcardsForm = () => {
             type="text"
             placeholder="Wpisz tytuł..."
             name="title"
-            ref={register({ required: true })}
+            ref={register({ required: true, maxLength: 10 })}
             className={styles.input}
           />
           {errors.title?.type === "required" && (
             <span className={styles.validationErrorMessage}>
               Pole nie może być puste
+            </span>
+          )}
+          {errors.title?.type === "maxLength" && (
+            <span className={styles.validationErrorMessage}>
+              Tytuł nie może być dłuższy niż 10 znaków
             </span>
           )}
           <span>Tytuł</span>
@@ -166,12 +176,17 @@ export const AddFlashcardsForm = () => {
             type="text"
             placeholder="Dodaj opis..."
             name="description"
-            ref={register({ required: true })}
+            ref={register({ required: true, maxLength: 14 })}
             className={styles.input}
           />
           {errors.description?.type === "required" && (
             <span className={styles.validationErrorMessage}>
               Pole nie może być puste
+            </span>
+          )}
+          {errors.title?.type === "maxLength" && (
+            <span className={styles.validationErrorMessage}>
+              Opis nie może być dłuższy niż 14 znaków
             </span>
           )}
           <span>Opis</span>
