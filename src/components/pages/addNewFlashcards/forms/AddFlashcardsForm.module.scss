@@ -1,7 +1,6 @@
 .form {
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
 .input {
@@ -36,6 +35,9 @@
   display: flex;
   justify-content: space-evenly;
   width: 100%;
+  @media screen and (min-width: 768px) {
+    justify-content: center;
+  }
 }
 
 .checkboxContainer input[type="radio"] {
@@ -54,6 +56,10 @@
   font-family: Comic Neue;
   font-weight: bold;
   margin-top: 1rem;
+  @media screen and (min-width: 768px) {
+    justify-content: center;
+    margin: 0.5rem 1.5rem;
+  }
 }
 
 .checkboxContainer label:hover,
@@ -83,11 +89,11 @@
 }
 
 .checkboxEasy {
-  background: linear-gradient(135deg, #d38120 0%, #fabd74 100%);
+  background: linear-gradient(135deg, #1873a9 0%, #64d1a0 100%);
 }
 
 .checkboxNormal {
-  background: linear-gradient(135deg, #1873a9 0%, #64d1a0 100%);
+  background: linear-gradient(135deg, #d38120 0%, #fabd74 100%);
 }
 
 .checkboxHard {
@@ -115,6 +121,10 @@
   margin: 1rem 0;
   padding: 1rem;
   width: 100%;
+  @media screen and (min-width: 1200px) {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .flashcardCreator label {
@@ -125,6 +135,9 @@
   text-transform: uppercase;
   line-height: 22px;
   margin-bottom: 1rem;
+  @media screen and (min-width: 1200px) {
+    margin: 1rem 5rem;
+  }
 }
 
 .buttonsContainer {

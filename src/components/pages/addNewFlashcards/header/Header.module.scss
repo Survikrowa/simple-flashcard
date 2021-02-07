@@ -8,8 +8,26 @@
   justify-content: space-around;
   align-items: center;
   padding: 1rem;
+  @media screen and (min-width: 768px) {
+    justify-content: flex-start;
+    font-size: 1.5rem;
+  }
 }
 
 .header a {
   height: 20px;
+  @media screen and (min-width: 768px) {
+    width: 35%;
+    display: flex;
+    align-self: center;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 41%;
+  }
+}
+
+.header a svg {
+  @media screen and (min-width: 768px) {
+    width: 7rem;
+  }
 }

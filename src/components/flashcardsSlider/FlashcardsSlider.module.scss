@@ -10,6 +10,9 @@
   margin: 1rem;
   font-family: "Comfortaa", cursive;
   text-align: center;
+  @media screen and (min-width: 1200px) {
+    font-size: 2rem;
+  }
 }
 
 .visible {
@@ -19,4 +22,5 @@
 .swiperSlide {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }

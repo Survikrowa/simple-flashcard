@@ -17,6 +17,8 @@
   min-width: 10rem;
   min-height: 10rem;
   position: relative;
+  height: 100%;
+  width: 70%;
 }
 
 .flashcardButton {
@@ -24,7 +26,7 @@
   border: none;
   margin: 1rem;
   display: flex;
-
+  cursor: pointer;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -41,4 +43,7 @@
 .term {
   position: absolute;
   font-family: "Comfortaa", cursive;
+  @media screen and (min-width: 1200px) {
+    font-size: 2rem;
+  }
 }
