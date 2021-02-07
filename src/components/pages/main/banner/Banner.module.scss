@@ -6,6 +6,17 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+
+  @media screen and (min-width: 768px) {
+    width: 100%;
+  }
+
+  @media screen and(min-width: 992px) {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 3rem;
+  }
 }
 
 .textContainer {
@@ -16,13 +27,17 @@
   font-size: 1rem;
   line-height: 150%;
   color: white;
+
+  @media screen and(min-width: 992px) {
+    font-size: 1.5rem;
+  }
 }
 
 .link {
   color: black;
   background-color: white;
   border-radius: 32px;
-  padding: 8px 8px 8px 8px;
+  padding: 11px;
   text-decoration: none;
   width: auto;
   white-space: nowrap;
@@ -32,6 +47,10 @@
   margin-top: 1rem;
   font-family: "Comfortaa";
   font-weight: bold;
+  @media screen and(min-width: 992px) {
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+  }
 }
 
 .link:visited {

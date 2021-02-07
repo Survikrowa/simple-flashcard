@@ -3,6 +3,16 @@
   flex-direction: column;
   justify-content: space-around;
   min-height: 100px;
+  @media screen and(min-width: 992px) {
+    font-size: 1.5rem;
+    padding: 1.5rem 0;
+  }
+}
+
+.flashcardText span {
+  @media screen and(min-width: 992px) {
+    margin: 1rem 0;
+  }
 }
 
 .link {

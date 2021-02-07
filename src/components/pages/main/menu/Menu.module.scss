@@ -5,10 +5,13 @@
   box-shadow: 4px 4px 32px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   background-color: white;
-  max-width: 12rem;
-  max-height: 10rem;
   overflow-x: auto;
   word-wrap: break-word;
+
+  @media screen and(min-width: 992px) {
+    font-size: 3rem;
+    top: 8rem;
+  }
 }
 .easy {
   background: linear-gradient(101.14deg, #0f68a9 4.74%, #7ef29d 123.99%);
@@ -27,12 +30,19 @@
   width: 2rem;
   margin: 0.4rem;
   border-radius: 8px;
+  @media screen and(min-width: 992px) {
+    height: 4rem;
+    width: 4rem;
+  }
 }
 .customFlashcards {
   display: flex;
   align-items: center;
   padding: 0.5rem 1rem;
   text-decoration: none;
+  @media screen and(min-width: 992px) {
+    margin: 3rem;
+  }
 }
 
 .menuText {

@@ -17,6 +17,7 @@ export const Main = () => {
         <div className={styles.container}>
           <span className={styles.line}>LUB</span>
         </div>
+        <h2 className={styles.header}>Skorzystaj z dostępnych zestawów</h2>
         <PresetFlashcardKits />
       </main>
     </>

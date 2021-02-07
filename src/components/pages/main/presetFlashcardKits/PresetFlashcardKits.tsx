@@ -17,9 +17,6 @@ export const PresetFlashcardKits = () => {
   );
 
   return (
-    <div className={styles.flashcardsContainer}>
-      <h2 className={styles.header}>Skorzystaj z dostępnych zestawów</h2>
-      {renderFlashcardKits}
-    </div>
+    <div className={styles.flashcardsContainer}>{renderFlashcardKits}</div>
   );
 };

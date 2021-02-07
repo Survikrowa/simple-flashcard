@@ -6,7 +6,24 @@
   padding: 0.5rem;
 }
 
+.header h1 svg {
+  @media screen and(min-width: 992px) {
+    height: 120px;
+    width: 150px;
+  }
+}
+
 .iconContainer {
   display: flex;
   align-items: center;
+  @media screen and(min-width: 992px) {
+    font-size: 2rem;
+    margin: 1.5rem;
+  }
+}
+
+.iconContainer span {
+  @media screen and(min-width: 992px) {
+    margin-left: 1rem;
+  }
 }

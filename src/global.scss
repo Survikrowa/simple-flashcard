@@ -11,4 +11,7 @@
 
 body {
   background-color: #4e4e4e;
+  @media screen and (min-width: 992px) {
+    height: 100vh;
+  }
 }
